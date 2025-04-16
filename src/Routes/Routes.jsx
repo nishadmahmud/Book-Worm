@@ -4,7 +4,7 @@ import Root from "../pages/Root/Root";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
 
-export const router = createBrowserRouter([
+export const Router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
