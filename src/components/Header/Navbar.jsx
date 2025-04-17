@@ -9,7 +9,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 w-[80%] m-auto">
+    <div className="navbar bg-base-100 mt-4 mb-8">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -41,7 +41,7 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal space-x-3.5">{links}</ul>
       </div>
-      <div className="navbar-end space-x-1">
+      <div className="navbar-end space-x-3.5">
         <a className="btn rounded-lg text-white font-semibold text-base bg-[#23BE0A]">
           Sign In
         </a>
