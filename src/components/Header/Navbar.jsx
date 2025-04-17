@@ -5,7 +5,7 @@ const Navbar = () => {
   const links = (
     <>
       <Link to='/'>Home</Link>
-      <li>Listed Books</li>
+      <Link to='/readlist'>Listed Books</Link>
       <li>Page to Read</li>
       <Link to='/about'>About Us</Link>
     </>

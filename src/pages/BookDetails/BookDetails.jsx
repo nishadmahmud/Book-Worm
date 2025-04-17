@@ -1,7 +1,7 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
 import { addToStoreDB } from "../../utility/addToDB";
-
+import { ToastContainer} from "react-toastify";
 const BookDetails = () => {
   const { id } = useParams();
   const data = useLoaderData();
@@ -19,11 +19,23 @@ const BookDetails = () => {
     yearOfPublishing,
   } = bookData;
 
-  const handleMarkRead = id => {
+  const handleMarkRead = (id) => {
     addToStoreDB(id);
-  }
+  };
   return (
     <div className="flex gap-10 mb-8">
+      <ToastContainer
+        position="top-right"
+        autoClose={1300}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <div className="bg-[#1313130D] flex justify-center items-center px-16 rounded-lg">
         <img src={image} className="h-[500px] w-auto rounded-md" />
       </div>
@@ -72,7 +84,10 @@ const BookDetails = () => {
           </div>
         </div>
         <div className="flex gap-3.5">
-          <button onClick={()=>handleMarkRead(id)} className="text-base font-semibold py-3 px-6 rounded-lg border border-[#1313134D] hover:bg-black hover:text-white">
+          <button
+            onClick={() => handleMarkRead(id)}
+            className="text-base font-semibold py-3 px-6 rounded-lg border border-[#1313134D] hover:bg-black hover:text-white"
+          >
             Read
           </button>
           <button className="text-base text-white font-semibold py-3 px-6 rounded-lg bg-[#50B1C9] border border-[#50B1C9] hover:bg-white hover:text-[#50B1C9]">
