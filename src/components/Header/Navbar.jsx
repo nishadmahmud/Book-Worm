@@ -1,13 +1,39 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
   const links = (
     <>
-      <Link to='/'>Home</Link>
-      <Link to='/readlist'>Listed Books</Link>
-      <li>Page to Read</li>
-      <Link to='/about'>About Us</Link>
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          isActive
+            ? "text-base font-medium text-[#23BE0A] py-3 px-4 border-2 border-[#23BE0A] rounded-lg"
+            : "py-3 px-4 text-base font-normal text-[#131313CC]"
+        }
+      >
+        Home
+      </NavLink>
+      <NavLink
+        to="/readlist"
+        className={({ isActive }) =>
+          isActive
+            ? "text-base font-medium text-[#23BE0A] py-3 px-4 border-2 border-[#23BE0A] rounded-lg"
+            : "text-base font-normal text-[#131313CC] py-3 px-4"
+        }
+      >
+        Listed Books
+      </NavLink>
+      <NavLink
+        to="/pageToRead"
+        className={({ isActive }) =>
+          isActive
+            ? "text-base font-medium text-[#23BE0A] py-3 px-4 border-2 border-[#23BE0A] rounded-lg"
+            : "text-base font-normal text-[#131313CC] py-3 px-4"
+        }
+      >
+        Page to Read
+      </NavLink>
     </>
   );
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
-import { addToStoreDB } from "../../utility/addToDB";
-import { ToastContainer} from "react-toastify";
+import { addToStoreDB, addToWishListDB } from "../../utility/addToDB";
+import { ToastContainer } from "react-toastify";
 const BookDetails = () => {
   const { id } = useParams();
   const data = useLoaderData();
@@ -21,6 +21,9 @@ const BookDetails = () => {
 
   const handleMarkRead = (id) => {
     addToStoreDB(id);
+  };
+  const handleWishList = (id) => {
+    addToWishListDB(id);
   };
   return (
     <div className="flex gap-10 mb-8">
@@ -90,7 +93,10 @@ const BookDetails = () => {
           >
             Read
           </button>
-          <button className="text-base text-white font-semibold py-3 px-6 rounded-lg bg-[#50B1C9] border border-[#50B1C9] hover:bg-white hover:text-[#50B1C9]">
+          <button
+            onClick={() => handleWishList(id)}
+            className="text-base text-white font-semibold py-3 px-6 rounded-lg bg-[#50B1C9] border border-[#50B1C9] hover:bg-white hover:text-[#50B1C9]"
+          >
             Wishlist
           </button>
         </div>

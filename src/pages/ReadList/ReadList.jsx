@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import { getStoredBook } from "../../utility/addToDB";
+import { getStoredBook, getWishListBook } from "../../utility/addToDB";
 import Book from "../Book/Book";
+import ReadListBook from "./ReadListBook";
 
 const ReadList = () => {
   const data = useLoaderData();
   const [readList, setReadLits] = useState([]);
+  const [wishList, setWishLits] = useState([]);
   const [sort, setSort] = useState("");
 
   const handleSort = (sortType) => {
@@ -17,9 +19,15 @@ const ReadList = () => {
         (a, b) => a.totalPages - b.totalPages
       );
       setReadLits(sortByPage);
+      const sortByPageW = [...wishList].sort(
+        (a, b) => a.totalPages - b.totalPages
+      );
+      setWishLits(sortByPageW);
     } else if (sortType == "Ratings") {
       const sortByRating = [...readList].sort((a, b) => a.rating - b.rating);
       setReadLits(sortByRating);
+      const sortByRatingW = [...readList].sort((a, b) => a.rating - b.rating);
+      setWishLits(sortByRatingW);
     }
   };
 
@@ -30,7 +38,17 @@ const ReadList = () => {
       ConvertedStoredBookData.includes(book.bookId)
     );
     setReadLits(myReadList);
+
+    const storedWishListData = getWishListBook();
+    const ConvertedStoredWishListData = storedWishListData.map((id) =>
+      parseInt(id)
+    );
+    const myWishList = data.filter((book) =>
+      ConvertedStoredWishListData.includes(book.bookId)
+    );
+    setWishLits(myWishList);
   }, []);
+
   return (
     <div>
       <div className="dropdown dropdown-hover w-fit m-auto flex mb-24 items-center justify-center">
@@ -56,12 +74,18 @@ const ReadList = () => {
         </TabList>
 
         <TabPanel>
-          {readList.map((book) => (
-            <Book key={book.bookId} book={book}></Book>
-          ))}
+          <div className="flex flex-col gap-5">
+            {readList.map((book) => (
+              <ReadListBook key={book.bookId} book={book} />
+            ))}
+          </div>
         </TabPanel>
         <TabPanel>
-          <h2>Any content 2</h2>
+          <div className="flex flex-col gap-5">
+            {wishList.map((book) => (
+              <ReadListBook key={book.bookId} book={book} />
+            ))}
+          </div>
         </TabPanel>
       </Tabs>
     </div>
