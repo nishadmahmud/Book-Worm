@@ -26,8 +26,13 @@ const ReadList = () => {
     } else if (sortType == "Ratings") {
       const sortByRating = [...readList].sort((a, b) => a.rating - b.rating);
       setReadLits(sortByRating);
-      const sortByRatingW = [...readList].sort((a, b) => a.rating - b.rating);
+      const sortByRatingW = [...wishList].sort((a, b) => a.rating - b.rating);
       setWishLits(sortByRatingW);
+    } else if (sortType == "Publish year") {
+      const sortByYear = [...readList].sort((a, b) => a.yearOfPublishing - b.yearOfPublishing);
+      setReadLits(sortByYear);
+      const sortByYearW = [...wishList].sort((a, b) => a.yearOfPublishing - b.yearOfPublishing);
+      setWishLits(sortByYearW);
     }
   };
 
@@ -57,13 +62,16 @@ const ReadList = () => {
         </div>
         <ul
           tabIndex={0}
-          className="dropdown-content menu mt-34 bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+          className="dropdown-content menu mt-34 bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm my-auto"
         >
-          <li>
+          <li className="text-center">
             <a onClick={() => handleSort("Pages")}>Pages</a>
           </li>
           <li>
             <a onClick={() => handleSort("Ratings")}>Rating</a>
+          </li>
+          <li>
+            <a onClick={() => handleSort("Publish year")}>Publish year</a>
           </li>
         </ul>
       </div>

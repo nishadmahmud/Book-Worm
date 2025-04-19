@@ -69,7 +69,7 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal space-x-3.5">{links}</ul>
       </div>
-      <div className="navbar-end space-x-3.5">
+      <div className="navbar-end space-x-3.5 hidden md:flex">
         <a className="btn rounded-lg text-white font-semibold text-base bg-[#23BE0A]">
           Sign In
         </a>

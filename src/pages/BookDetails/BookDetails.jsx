@@ -26,7 +26,7 @@ const BookDetails = () => {
     addToWishListDB(id);
   };
   return (
-    <div className="flex gap-10 mb-8">
+    <div className="flex flex-col md:flex-row gap-10 mb-8">
       <ToastContainer
         position="top-right"
         autoClose={1300}
@@ -39,8 +39,8 @@ const BookDetails = () => {
         pauseOnHover
         theme="light"
       />
-      <div className="bg-[#1313130D] flex justify-center items-center px-16 rounded-lg">
-        <img src={image} className="h-[500px] w-auto rounded-md" />
+      <div className="bg-[#1313130D] flex justify-center items-center px-16 py-5 md:py-0 rounded-lg">
+        <img src={image} className="h-56 md:h-[500px] w-auto rounded-md" />
       </div>
       <div className="space-y-5 flex-1/2">
         <div className="space-y-3.5">
