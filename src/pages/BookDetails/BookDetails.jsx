@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLoaderData, useParams } from "react-router";
 import { addToStoreDB, addToWishListDB } from "../../utility/addToDB";
 import { ToastContainer } from "react-toastify";
@@ -25,6 +25,10 @@ const BookDetails = () => {
   const handleWishList = (id) => {
     addToWishListDB(id);
   };
+
+  useEffect(()=>{
+    window.scrollTo(0,120);
+  },[])
   return (
     <div className="flex flex-col md:flex-row gap-10 mb-8">
       <ToastContainer

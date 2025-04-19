@@ -5,7 +5,7 @@ import { Link } from "react-router";
 const Book = ({ book }) => {
   const { bookName, author, image, rating, category, tags, bookId } = book;
   return (
-    <Link to={`/bookDetails/${bookId}`}>
+    <Link to={`/bookDetails/${bookId}`} state={{ key: bookId }}>
       <div className="p-5 flex flex-col justify-center border border-[#13131326] rounded-md gap-5">
         <div className="bg-[#F3F3F3] rounded-sm py-7 flex items-center justify-center">
           <img src={image} className="h-36 w-auto rounded-sm" />
